@@ -1,0 +1,29 @@
+Hi Loic,
+
+
+
+
+Mini-project: Weather Forecast Web
+
+Create a Weather forecast web application which will display the current weather and a forecast for a place (city, village, coords)
+ entered by the user.
+
+Technologies to be used
+Must use AngularJS (www.angularjs.org) & Bootstrap (getbootstrap.com/) for the web client.
+Weather data will be provided by openweathermap.org using its JSON API (openweathermap.org/API).
+Functionalities
+Search by entering the city name, state and country, or geographic coordinates.
+The results should include the current weather in metric or imperial system as a user's choice, as well as the forecast
+ for up to 5 days ahead.
+User can select the language of the results (default English).
+Displayed information should include the appropriate images for the weather provided by www.openweathermap.org.
+If users comes back to the app, the app remembers the last city selected.
+Once done
+Deploy your project on a public server
+Upload your source code to www.github.com
+
+Send us both links so we can go look at it. Please copy me, Daniel, and Ivaylo (all CCed here).
+What is important
+Everything should work
+It should look good
+The code should read like prose and there are enough comments
