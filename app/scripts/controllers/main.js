@@ -110,7 +110,7 @@
 
 
 
-                     $scope.response=$scope.result.name+','+$scope.result.currentT+','+$scope.result.descriptionCurrentT;
+                     $scope.response='For today in '+$scope.result.name+' : '+$scope.result.currentT+','+$scope.result.descriptionCurrentT;
 
                      myCache.put('myData', $scope.response);
                      $cookies.put('myCookie',$scope.response);
@@ -139,7 +139,7 @@
 
           // this callback will be called asynchronously
           // when the response is available
-  
+
           $scope.informations=response.data;
            $scope.result=[{"name":"","currentT":"","descriptionCurrentT":"" }]
            console.log(response.data)
@@ -167,7 +167,7 @@
 
 
 
-           $scope.response=$scope.result.name+','+$scope.result.currentT+','+$scope.result.descriptionCurrentT;
+           $scope.response='For today in '+$scope.result.name+' : '+$scope.result.currentT+','+$scope.result.descriptionCurrentT;
 
            myCache.put('myData', $scope.response);
            $cookies.put('myCookie',$scope.response);
@@ -224,7 +224,7 @@
 
 
 
-               $scope.response=$scope.result.name+','+$scope.result.currentT+','+$scope.result.descriptionCurrentT;
+               $scope.response='For today in '+$scope.result.name+' : '+$scope.result.currentT+','+$scope.result.descriptionCurrentT;
 
                myCache.put('myData', $scope.response);
                $cookies.put('myCookie',$scope.response);
