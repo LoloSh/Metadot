@@ -9,8 +9,11 @@
  */
 
  var myApp = angular.module('metadotApp', ['ngCookies']);
-
+/*Définition of the unique controller
+*/
  myApp.controller('MainCtrl', ['$scope','$http', 'myCache','$cookies', function ($scope,$http,myCache,$cookies) {
+
+// the temp variable will be used when we will do our http request to the api
 
    if ($scope.degree=="metric")
    {
@@ -24,10 +27,9 @@
      var temp = " degrees Kelvin";
    }
 
-
+      // This function is used to get the cookies and the cache of the user navigation
       activeCache($scope, myCache);
       function  activeCache($scope, myCache){
-      //myCache.put('myData', 'test');
       var cache = myCache.get('myData');
       var cookie=$cookies.get('myCookie');
       var cookie1=$cookies.get('myCookie1');
@@ -44,9 +46,9 @@
 
 
       if (cache) { // If there’s something in the cache, use it!
-        $scope.response = cache//cache['city']['name'];
+        $scope.response = cache
       }
-      else if (cookie){
+      else if (cookie){ // If there's something in the cookies , we print it on the screen
         $scope.response = cookie;
         $scope.response1=cookie1;
         $scope.response2=cookie2;
@@ -54,7 +56,7 @@
         $scope.response4=cookie4;
 
       }
-      else {
+      else { // If there's nothing, we print "No previous research " to the user
         $scope.response="No previous research"
         $scope.response1="";
         $scope.response2="";
@@ -66,13 +68,14 @@
 
 
 
-
+// The followed function is used when the user press the "Find" button which submit the form
+// Depending on which datas the user gave to submit the form, we call a different URL using different tyes of data
   $scope.datas = function(){
 
     if($scope.long!=null && $scope.lat!=null)
     {
       $http({
-          method: 'GET', //q=London
+          method: 'GET',
           cache:true,
           url: "http://" +'api.openweathermap.org/data/2.5/forecast?lat='+$scope.lat +'&lon='+$scope.long+'&lang='+ $scope.language+'&units='+$scope.degree+ '&APPID=f8afa1eacfd3cc0e7ecbb783df45bf3f'
         }).then(function successCallback(response) {
@@ -96,10 +99,7 @@
                      var response2 = "For " + days[(n+2)%7] + " : " +response.data['list'][16]['main']['temp']+ temp+', '+response.data['list'][16]['weather'][0]['description'];
                      var response3 = "For " + days[(n+3)%7] + " : "+response.data['list'][24]['main']['temp']+ temp+', '+response.data['list'][24]['weather'][0]['description'];
                      var response4 = "For " + days[(n+4)%7] + " : "+response.data['list'][32]['main']['temp']+ temp +', '+response.data['list'][32]['weather'][0]['description'];
-                     console.log(response1);
-                     console.log(response2);
-                     console.log(response3);
-                     console.log(response4);
+
 
                      $scope.response1=response1;
                      $scope.response2=response2;
@@ -155,10 +155,7 @@
            var response2 = "For " + days[(n+2)%7] + " : " +response.data['list'][16]['main']['temp']+ temp+', '+response.data['list'][16]['weather'][0]['description'];
            var response3 = "For " + days[(n+3)%7] + " : "+response.data['list'][24]['main']['temp']+ temp+', '+response.data['list'][24]['weather'][0]['description'];
            var response4 = "For " + days[(n+4)%7] + " : "+response.data['list'][32]['main']['temp']+ temp +', '+response.data['list'][32]['weather'][0]['description'];
-           console.log(response1);
-           console.log(response2);
-           console.log(response3);
-           console.log(response4);
+
 
            $scope.response1=response1;
            $scope.response2=response2;
@@ -212,10 +209,7 @@
                var response2 = "For " + days[(n+2)%7] + " : " +response.data['list'][16]['main']['temp']+ temp+', '+response.data['list'][16]['weather'][0]['description'];
                var response3 = "For " + days[(n+3)%7] + " : "+response.data['list'][24]['main']['temp']+ temp+', '+response.data['list'][24]['weather'][0]['description'];
                var response4 = "For " + days[(n+4)%7] + " : "+response.data['list'][32]['main']['temp']+ temp +', '+response.data['list'][32]['weather'][0]['description'];
-               console.log(response1);
-               console.log(response2);
-               console.log(response3);
-               console.log(response4);
+
 
                $scope.response1=response1;
                $scope.response2=response2;
@@ -261,6 +255,7 @@
  }]);
 
  // Set up the cache ‘myCache’
+ // This factory is used to store a cache frrom the user navigation
 myApp.factory('myCache', ['$cacheFactory', function($cacheFactory) {
 return $cacheFactory('myData');
 }]);
